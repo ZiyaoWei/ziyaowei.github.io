@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chess Opening Roulette</title>
+  <!-- Include jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Include Chessboard.js CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Chess Opening Roulette</h1>
+  <div id="container">
+    <div id="board"></div>
+    <div id="info">
+      <p id="opening-name">Opening: </p>
+      <p id="prompt">Your move:</p>
+      <p id="feedback"></p>
+      <button id="retry-btn">Retry</button>
+      <button id="new-opening-btn">New Opening</button>
+    </div>
+  </div>
+
+  <!-- Include Chess.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.12.0/chess.min.js"></script>
+  <!-- Include Chessboard.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.js"></script>
+  <!-- Application Script -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+#container {
+  display: flex;
+  align-items: flex-start;
+}
+#board {
+  width: 400px;
+}
+#info {
+  margin-left: 20px;
+  max-width: 300px;
+}
+#info p {
+  font-size: 18px;
+}
+#info button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  font-size: 16px;
+}
+#feedback {
+  margin-top: 10px;
+  font-weight: bold;
+}
+h1 {
+  margin-bottom: 20px;
+}
