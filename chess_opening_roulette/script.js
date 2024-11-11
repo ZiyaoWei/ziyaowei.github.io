@@ -68,16 +68,19 @@ $(document).ready(function() {
     const move = chess.move({
       from: source,
       to: target,
-      promotion: 'q' // Promote to queen for simplicity
+      promotion: 'q'
     });
 
     // Illegal move
-    if (move === null) return 'snapback';
+    if (move === null) {
+      $('#feedback').text('Illegal move. Try again.');
+      return 'snapback';
+    }
 
     const expectedMoveSAN = currentOpening.moves[moveIndex];
 
     if (move.san === expectedMoveSAN) {
-      // Correct move
+      board.position(chess.fen(), false); // Instant update for player moves
       moveIndex++;
       $('#feedback').text('Correct!');
       if (moveIndex >= currentOpening.moves.length) {
@@ -87,7 +90,7 @@ $(document).ready(function() {
       } else {
         // Make the next move (if it's the opponent's turn)
         if (chess.turn() === 'b') {
-          makeExpectedMove();
+          setTimeout(makeExpectedMove, 300); // Add delay before computer's move
         }
       }
     } else {
@@ -108,7 +111,7 @@ $(document).ready(function() {
     for (let i = 0; i < moves.length; i++) {
       if (moves[i].san === expectedMoveSAN) {
         chess.move(moves[i].san);
-        board.position(chess.fen());
+        board.position(chess.fen()); // Enable animation for computer moves
         moveIndex++;
         break;
       }
