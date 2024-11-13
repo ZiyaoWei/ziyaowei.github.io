@@ -2,21 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Collatz Reich</title>
+  <title>Collatz^Reich</title>
   <link rel="stylesheet" href="styles.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="24a6f42d-2ffe-42ef-a015-cf7a92555f2f"></script>
 </head>
 <body>
-  <h1>Collatz Reich</h1>
-  <p>What happens when the Collatz conjecture meets clapping music?</p>
-  <p>Enter a starting number to hear its Collatz sequence as a clapping rhythm.</p>
-  <p>Each number's binary representation becomes a clapping pattern, with no rest between numbers.</p>
-  <p>Louder claps represent 1s, quieter claps represent 0s.</p>
-  <p>Inspired by "Clapping Music" by Steve Reich.</p>
+  <h1>Collatz<sup>Reich</sup></h1>
+  <p>A musical exploration of the Collatz conjecture, inspired by Steve Reich's "Clapping Music".</p>
+  <p>Enter two starting numbers.</p>
+  <p>Each number's binary representation becomes a rhythmic pattern, where 1s are loud claps and 0s are soft claps.</p>
+  <p>As each number follows the Collatz sequence, its binary pattern evolves until reaching 1.</p>
   
   <div id="controls">
-    <input type="number" id="startNum" value="27" min="1">
-    <button id="play">Play</button>
-    <button id="stop">Stop</button>
+    <div>
+      <label>Left: <input type="number" id="startNumLeft" value="27" min="1"></label>
+      <label>Right: <input type="number" id="startNumRight" value="31" min="1"></label>
+    </div>
+    <div>
+      <button id="play">Play</button>
+      <button id="stop">Stop</button>
+      <button id="randomize">Randomize</button>
+    </div>
   </div>
   
   <div id="sequence"></div>
