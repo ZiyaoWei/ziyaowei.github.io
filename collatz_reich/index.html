@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Collatz Reich</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Collatz Reich</h1>
+  <p>What happens when the Collatz conjecture meets clapping music?</p>
+  <p>Enter a starting number to hear its Collatz sequence as a clapping rhythm.</p>
+  <p>Each number's binary representation becomes a clapping pattern, with no rest between numbers.</p>
+  <p>Louder claps represent 1s, quieter claps represent 0s.</p>
+  <p>Inspired by "Clapping Music" by Steve Reich.</p>
+  
+  <div id="controls">
+    <input type="number" id="startNum" value="27" min="1">
+    <button id="play">Play</button>
+    <button id="stop">Stop</button>
+  </div>
+  
+  <div id="sequence"></div>
+  <script src="script.js"></script>
+</body>
+</html>

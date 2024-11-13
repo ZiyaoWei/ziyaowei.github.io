@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  #sequence {
+    font-family: monospace;
+    margin: 20px 0;
+    font-size: 1.2em;
+    white-space: pre;
+    text-align: left;
+    padding: 20px;
+  }
+  #controls {
+    margin: 20px 0;
+  }
+  button, input {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin: 0 10px;
+  }
+  input {
+    width: 100px;
+  }
