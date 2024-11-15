@@ -265,9 +265,7 @@ function getCollatzLength(n) {
   return length;
 }
 
-function findSimilarNumbers(targetLength, tolerance = 0.2) {
-  const minLength = targetLength * (1 - tolerance);
-  const maxLength = targetLength * (1 + tolerance);
+function findSimilarNumbers(targetLength, excludeNum, tolerance = 0.2) {
   let attempts = 0;
   let num;
 
@@ -275,7 +273,8 @@ function findSimilarNumbers(targetLength, tolerance = 0.2) {
     num = Math.floor(Math.random() * 100) + 1;
     attempts++;
   } while (
-    Math.abs(getCollatzLength(num) - targetLength) > tolerance * targetLength &&
+    (Math.abs(getCollatzLength(num) - targetLength) > tolerance * targetLength ||
+    num === excludeNum) &&
     attempts < 50
   );
 
@@ -286,12 +285,24 @@ document.getElementById("randomize").addEventListener("click", () => {
   // Stop any current playback
   document.getElementById("stop").click();
 
-  // Generate first random number
-  const num1 = Math.floor(Math.random() * 100) + 1;
-  const targetLength = getCollatzLength(num1);
+  let num1, num2;
+  let attempts = 0;
+  const maxAttempts = 100;
 
-  // Find a second number with similar sequence length
-  const num2 = findSimilarNumbers(targetLength);
+  do {
+    // Generate first random number
+    num1 = Math.floor(Math.random() * 100) + 1;
+    const targetLength = getCollatzLength(num1);
+
+    // Find a second number with similar sequence length
+    num2 = findSimilarNumbers(targetLength, num1);
+    
+    attempts++;
+  } while (
+    Math.abs(getCollatzLength(num1) - getCollatzLength(num2)) > 
+    getCollatzLength(num1) * 0.2 && 
+    attempts < maxAttempts
+  );
 
   // Update inputs
   document.getElementById("startNumLeft").value = num1;
