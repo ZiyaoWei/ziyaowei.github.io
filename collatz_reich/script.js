@@ -4,10 +4,11 @@ const SOFT_FREQUENCY = 1000;
 const LOUD_VOLUME = 0.3;
 const SOFT_VOLUME = 0.1;
 const CLAP_DURATION = 0.05;
-const CLAP_INTERVAL = 60 / BPM / 2; // Clapping Music is at 160-184 BPM with eighth notes
+// Clapping Music is at 160-184 BPM with eighth notes
+const CLAP_INTERVAL = 60 / BPM / 2;
 const STEREO_PAN = 0.8; // How far to pan left/right (-1 to 1)
 const AUDIO_URLS = {
-  left: "https://cdn.freesound.org/previews/15/15381_40665-lq.mp3",
+  left: "https://cdn.freesound.org/previews/404/404549_5121236-lq.mp3",
   right: "https://cdn.freesound.org/previews/11/11876_32690-lq.mp3",
 };
 let audioBuffers = {};
@@ -16,7 +17,7 @@ let audioContext;
 let isPlaying = false;
 let scheduledCallbacks = []; // Store all scheduled timeouts
 
-const LEFT_VOLUME_MULTIPLIER = 1.8; // Makes left channel 80% louder
+const LEFT_VOLUME_MULTIPLIER = 1.15; // Makes left channel 15% louder
 
 async function loadAudioSamples() {
   if (!audioContext) {
@@ -82,11 +83,7 @@ function playPattern(currentLineIndex, binary, startTime, isLeft) {
   }
 }
 
-function formatSequence(sequence) {
-  // Find the longest number for padding
-  const maxNumLength = Math.max(
-    ...sequence.map((item) => item.num.toString().length)
-  );
+function formatSequence(sequence, maxNumLength) {
   return sequence
     .map(
       (item) => `${item.num.toString().padStart(maxNumLength)}: ${item.binary}`
@@ -121,12 +118,15 @@ function updateDisplay(lineIndex, digitIndex, isLeft) {
 
   if (!column || !sequence || lineIndex >= sequence.length) return;
 
+  const maxNumLength = Math.max(
+    ...sequence.map((item) => item.num.toString().length)
+  );
   const lines = column.textContent.split("\n");
 
   // Reset all highlighting
   lines.forEach((_, i) => {
     if (sequence[i]) {
-      lines[i] = formatSequence([sequence[i]]);
+      lines[i] = formatSequence([sequence[i]], maxNumLength);
     }
   });
 
@@ -135,7 +135,7 @@ function updateDisplay(lineIndex, digitIndex, isLeft) {
     const [num, binary] = lines[lineIndex].split(": ");
     const binaryDigits = binary.split("");
     binaryDigits[digitIndex] = `<strong>${binaryDigits[digitIndex]}</strong>`;
-    lines[lineIndex] = `${num}: ${binaryDigits.join("")}`;
+    lines[lineIndex] = `${num.toString().padStart(maxNumLength)}: ${binaryDigits.join("")}`;
   }
 
   column.innerHTML = lines.join("\n");
@@ -175,8 +175,16 @@ function displaySequences(startLeft, startRight) {
   leftColumn.className = "sequence-column";
   rightColumn.className = "sequence-column";
 
-  leftColumn.textContent = formatSequence(leftSequence);
-  rightColumn.textContent = formatSequence(rightSequence);
+  // Find the longest number for padding
+  const leftMaxNumLength = Math.max(
+    ...leftSequence.map((item) => item.num.toString().length)
+  );
+  const rightMaxNumLength = Math.max(
+    ...rightSequence.map((item) => item.num.toString().length)
+  );
+
+  leftColumn.textContent = formatSequence(leftSequence, leftMaxNumLength);
+  rightColumn.textContent = formatSequence(rightSequence, rightMaxNumLength);
 
   sequenceDiv.innerHTML = "";
   sequenceDiv.appendChild(leftColumn);
@@ -190,7 +198,7 @@ function displaySequences(startLeft, startRight) {
   return { leftSequence, rightSequence };
 }
 
-document.getElementById("play").addEventListener("click", async () => {
+async function play() {
   // Clear any existing timeouts first
   scheduledCallbacks.forEach((timeoutId) => clearTimeout(timeoutId));
   scheduledCallbacks = [];
@@ -214,9 +222,11 @@ document.getElementById("play").addEventListener("click", async () => {
 
   isPlaying = true;
   playSequence(startLeft, startRight);
-});
 
-document.getElementById("stop").addEventListener("click", () => {
+  document.getElementById("play").innerHTML = "Play/<strong>Stop</strong>";
+}
+
+function stop() {
   isPlaying = false;
 
   // Clear all scheduled timeouts
@@ -227,6 +237,19 @@ document.getElementById("stop").addEventListener("click", () => {
   if (audioContext) {
     audioContext.close();
     audioContext = null;
+  }
+
+  updateDisplay(-1, -1, true);
+  updateDisplay(-1, -1, false);
+
+  document.getElementById("play").innerHTML = "<strong>Play</strong>/Stop";
+}
+
+document.getElementById("play").addEventListener("click", async () => {
+  if (isPlaying) {
+    stop();
+  } else {
+    await play();
   }
 });
 
@@ -283,11 +306,13 @@ function findSimilarNumbers(targetLength, excludeNum, tolerance = 0.2) {
 
 document.getElementById("randomize").addEventListener("click", () => {
   // Stop any current playback
-  document.getElementById("stop").click();
+  if (isPlaying) {
+    stop();
+  }
 
   let num1, num2;
   let attempts = 0;
-  const maxAttempts = 100;
+  const maxAttempts = 1000;
 
   do {
     // Generate first random number

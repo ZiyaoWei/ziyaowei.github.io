@@ -8,9 +8,9 @@
 </head>
 <body>
   <h1>Collatz<sup>Reich</sup></h1>
-  <p>A musical exploration of the Collatz conjecture, inspired by Steve Reich's "Clapping Music".</p>
-  <p>Enter two starting numbers.</p>
-  <p>Each number's binary representation becomes a rhythmic pattern, where 1s are loud claps and 0s are soft claps.</p>
+  <p>A musical exploration of the Collatz/3n+1 conjecture, inspired by Steve Reich's "Clapping Music".</p>
+  <p>Enter two starting numbers, or let Randomize choose two numbers for you.</p>
+  <p>Each number's binary representation becomes a rhythmic pattern, where 1s are claps.</p>
   <p>As each number follows the Collatz sequence, its binary pattern evolves until reaching 1.</p>
   
   <div id="controls">
@@ -19,13 +19,25 @@
       <label>Right: <input type="number" id="startNumRight" value="31" min="1"></label>
     </div>
     <div>
-      <button id="play">Play</button>
-      <button id="stop">Stop</button>
+      <button id="play"><strong>Play</strong>/Stop</button>
       <button id="randomize">Randomize</button>
     </div>
   </div>
   
   <div id="sequence"></div>
+
   <script src="script.js"></script>
+
+  <div>
+    <h3>Credits, inspirations, and more things to check out:</h3>
+    <p>→ <a href="https://apps.apple.com/us/app/steve-reichs-clapping-music/id946487211" target="_blank" data-umami-event="clapping-music-app">Steve Reich's Clapping Music app</a> - learn this fascinating piece</p>
+    <p>→ <a href="https://www.youtube.com/watch?v=hH1j06bMHDQ" target="_blank" data-umami-event="clapping-music-performance">Performance</a> of Steve Reich's "Clapping Music" by Steve Reich & Wolfram Winkel</p>
+    <p>→ <a href="https://www.youtube.com/@mathkook" target="_blank" data-umami-event="kevin-knight-channel">Kevin Knight's channel</a> about the Collatz Conjecture - 70+ videos and counting, a treasure trove.</p>
+    <p>→ Professor Knight also wrote a book on the subject <a href="https://amzn.to/4i1CZsR" target="_blank" data-umami-event="kevin-knight-book-amazon">[Amazon Affiliate link]</a></p>
+    <p>→ <a href="https://teropa.info/loop/#/title" target="_blank" data-umami-event="generative-music-post">How Generative Music Works</a> by Tero Parviainen - a great intro blogpost</p>
+    <p>→ <a href="https://en.wikipedia.org/wiki/The_Rest_Is_Noise" data-umami-event="the-rest-is-noise-book">The Rest Is Noise: Listening to the Twentieth Century</a> by Alex Ross - one of the best books I have ever read <a href="https://amzn.to/4eO6mfk" target="_blank" data-umami-event="the-rest-is-noise-book-amazon">[Amazon Affiliate link]</a></p>
+    <p>→ <a href="https://freesound.org/" target="_blank" data-umami-event="freesound">Freesound</a> - the clapping samples are by <a href="https://freesound.org/people/InspectorJ/sounds/404549/" target="_blank" data-umami-event="freesound-InspectorJ">InspectorJ</a> and <a href="https://freesound.org/people/medialint/sounds/11876/" target="_blank" data-umami-event="freesound-medialint">medialint</a></p>
+  </div>
+
 </body>
 </html>
