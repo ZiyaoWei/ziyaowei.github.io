@@ -1,0 +1,20 @@
+[
+ {
+  "id": "bwv846",
+  "label": "Prelude in C, BWV 846",
+  "title": "Prelude No. 1 in C major, BWV 846",
+  "composer": "J. S. Bach",
+  "note": "Well-Tempered Clavier, Book I (1722). Broken chords: each bar is one harmony, arpeggiated.",
+  "duration": 136.0,
+  "source": "https://www.bach-digital.de/receive/BachDigitalWork_work_00000986"
+ },
+ {
+  "id": "bwv422",
+  "label": "Chorale, BWV 422",
+  "title": "Chorale: Warum sollt ich mich denn gr\u00e4men, BWV 422",
+  "composer": "J. S. Bach",
+  "note": "The chorale Isochords itself visualizes in Figure 12. Four voices, almost always a full triad.",
+  "duration": 48.75,
+  "source": "https://www.bach-digital.de/receive/BachDigitalWork_work_00000492"
+ }
+]

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Isochords</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="24a6f42d-2ffe-42ef-a015-cf7a92555f2f"></script>
+</head>
+<body>
+  <h1>Isochords</h1>
+  <p class="subtitle">Tony Bergstrom, Karrie Karahalios &amp; John C. Hart, <a href="https://dl.acm.org/doi/10.1145/1268517.1268565" target="_blank" data-umami-event="isochords-paper">Graphics Interface 2007</a></p>
+
+  <p class="lead">The following interactive visualization is my interpretation of the Isochords (<a href="https://dl.acm.org/doi/10.1145/1268517.1268565" target="_blank" data-umami-event="isochords-paper-lead">Bergstrom et al., 2007</a>) system.</p>
+
+  <p>The twelve notes sit on a <strong><a href="https://en.wikipedia.org/wiki/Tonnetz" target="_blank" data-umami-event="tonnetz-wiki">Tonnetz</a></strong>, a lattice diagram designed by Leonhard Euler (!) to represent the tonal space. Moving right on a Tonnetz is a perfect fifth, moving up a major third &mdash; so every major or minor chord falls out as a triangle:</p>
+
+  <blockquote>
+    <p>&ldquo;major&rdquo; triads connect into an upward arrow whereas &ldquo;minor&rdquo; triads yield a downward arrow. &hellip; The triad's triangle becomes visible only when each of the three corners are activated.</p>
+    <cite>&mdash; &sect;1.1 and &sect;4.1</cite>
+  </blockquote>
+
+  <p>So the harmony draws itself as the music plays. Watch the triangles bloom and fade across the grid, tracing the harmonic shape of the piece. Pick a sample below, or load your own MIDI file &mdash; the <a href="https://dl.acm.org/doi/10.1145/1268517.1268565" target="_blank" data-umami-event="isochords-paper-intro">paper</a> has the full account.</p>
+
+  <div id="controls">
+    <div id="presets">
+      <button class="preset" data-preset="canon">Canon in D</button>
+      <button class="preset" data-preset="jazz">ii&ndash;V&ndash;I in C</button>
+      <button class="preset" data-preset="modulation">Modulation by a Fifth</button>
+    </div>
+    <div id="tracks"></div>
+    <p id="track-note" class="hint"></p>
+    <div>
+      <button id="load-midi">Load a MIDI file&hellip;</button>
+      <button id="stop">Stop</button>
+      <input type="file" id="midi-file" accept=".mid,.midi,audio/midi,audio/x-midi" hidden>
+    </div>
+    <p class="hint">You can also drop a <code>.mid</code> file onto the grid. Nothing is uploaded &mdash; it's read in your browser.</p>
+    <div id="options">
+      <label class="toggle" for="tempo">Tempo <input type="range" id="tempo" min="0.4" max="1.6" step="0.05" value="1"> <span id="tempo-label">1.00&times;</span></label>
+      <label class="toggle"><input type="checkbox" id="show-labels"> Show note names</label>
+    </div>
+    <p id="now-playing"></p>
+    <div id="chord-display">
+      <span id="chord-roman"></span>
+      <span id="chord-name"></span>
+      <span id="chord-key"></span>
+    </div>
+    <div id="progression-strip"></div>
+  </div>
+
+  <div id="tonnetz-panel">
+    <svg id="tonnetz" xmlns="http://www.w3.org/2000/svg"></svg>
+  </div>
+
+  <div id="score-panel" hidden>
+    <div id="score"></div>
+  </div>
+
+  <script src="vendor/tonejs-midi.js"></script>
+  <script src="script.js"></script>
+
+  <div>
+    <h3>Credits, inspirations, and more things to check out:</h3>
+    <p>&rarr; <a href="https://dl.acm.org/doi/10.1145/1268517.1268565" target="_blank" data-umami-event="isochords-paper">Isochords: Visualizing Structure in Music</a> by Tony Bergstrom, Karrie Karahalios &amp; John C. Hart: the paper this page reproduces.</p>
+    <p>&rarr; <a href="https://github.com/Tonejs/Midi" target="_blank" data-umami-event="tonejs-midi">@tonejs/midi</a> by Yotam Mann (MIT) parses the MIDI files you load; <a href="https://opensheetmusicdisplay.org/" target="_blank" data-umami-event="osmd">OpenSheetMusicDisplay</a> (BSD) engraves the scores. Everything else here is plain HTML, CSS and JavaScript.</p>
+    <p>&rarr; <a href="https://www.bach-digital.de/" target="_blank" data-umami-event="bach-digital">Bach Digital</a> (Bach-Archiv Leipzig) &mdash; the authoritative catalogue of Bach's manuscript sources. Each piece above links to its work record there. It publishes facsimiles rather than machine-readable notation, so the notes played here come from the <a href="https://www.music21.org/music21docs/about/referenceCorpus.html" target="_blank" data-umami-event="music21">music21 corpus</a>; the chorale engraving is &copy; 2004 Margaret Greentree, used by permission, as noted on the score itself.</p>
+    <p>&rarr; <a href="https://www.youtube.com/watch?v=JdxkVQy7QLM" target="_blank" data-umami-event="pachelbel-rant">Pachelbel Rant</a> by Rob Paravonian &mdash; please listen if you haven't.</p>
+  </div>
+
+</body>
+</html>
