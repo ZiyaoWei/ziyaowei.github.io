@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Isochords</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="24a6f42d-2ffe-42ef-a015-cf7a92555f2f"></script>
+</head>
+<body>
+  <h1>Isochords</h1>
+  <p class="subtitle">Tony Bergstrom, Karrie Karahalios &amp; John C. Hart, <a href="https://dl.acm.org/doi/10.1145/1268517.1268565" target="_blank" data-umami-event="isochords-paper">Graphics Interface 2007</a></p>
+
+  <p class="lead">The following interactive visualization is my interpretation of the Isochords (<a href="https://dl.acm.org/doi/10.1145/1268517.1268565" target="_blank" data-umami-event="isochords-paper-lead">Bergstrom et al., 2007</a>) system.</p>
+
+  <p>In the authors' words:</p>
+
+  <blockquote>
+    <p>Isochords is a visualization of music that aids in the classification of musical structure. The Isochords visualization highlights the consonant intervals between notes and common chords in music. It conveys information about interval quality, chord quality, and the chord progression synchronously during playback of digital music.</p>
+    <cite>&mdash; Abstract</cite>
+  </blockquote>
+
+  <blockquote>
+    <p>Isochords displays musical events on a two-dimensional triangular isometric coordinate grid invented by Euler called Tonnetz, popular in modern musical analysis &hellip; to visually approximate the consonance and dissonance of tones roughly by distance. &hellip; This organization offers a visual connotation for simple chords in Western music as &ldquo;major&rdquo; triads connect into an upward arrow whereas &ldquo;minor&rdquo; triads yield a downward arrow.</p>
+    <cite>&mdash; &sect;1.1, Isochords</cite>
+  </blockquote>
+
+  <blockquote>
+    <p>Visually, the tone classes are represented as concentric circles. The radius of a circle is indicative of the note's corresponding octave. Lower notes are represented by larger circles, corresponding to large instruments like the tuba, bass or bassoon and the larger wavelength of sound.</p>
+    <p>The major and minor triads remain invisible if their corresponding notes are silent. The triad's triangle becomes visible only when each of the three corners are activated. Similarly, lines of consonant intervals appear only when two adjacent circles are activated.</p>
+    <cite>&mdash; &sect;4.1, Display of Chords, Voicing and Dynamics</cite>
+  </blockquote>
+
+  <blockquote>
+    <p>The key to the Isochords visualization is its display of musical structure on the Tonnetz grid over time. Thus place holders for note classes are shown when they are inactive, to serve as a reference for observing harmonic transitions on the grid.</p>
+    <cite>&mdash; &sect;4.2, Animating Chord Progression</cite>
+  </blockquote>
+
+  <p>Pick a progression below.</p>
+
+  <div id="controls">
+    <div id="presets">
+      <button class="preset" data-preset="canon">Canon in D</button>
+      <button class="preset" data-preset="jazz">ii&ndash;V&ndash;I in C</button>
+      <button class="preset" data-preset="modulation">Modulation by a Fifth</button>
+    </div>
+    <div>
+      <button id="stop">Stop</button>
+    </div>
+    <p id="now-playing"></p>
+    <div id="chord-display">
+      <span id="chord-roman"></span>
+      <span id="chord-name"></span>
+      <span id="chord-key"></span>
+    </div>
+    <div id="progression-strip"></div>
+  </div>
+
+  <div id="tonnetz-panel">
+    <svg id="tonnetz" xmlns="http://www.w3.org/2000/svg"></svg>
+  </div>
+
+  <script src="script.js"></script>
+
+  <div>
+    <h3>Credits, inspirations, and more things to check out:</h3>
+    <p>&rarr; <a href="https://dl.acm.org/doi/10.1145/1268517.1268565" target="_blank" data-umami-event="isochords-paper">Isochords: Visualizing Structure in Music</a> by Tony Bergstrom, Karrie Karahalios &amp; John C. Hart, Graphics Interface 2007.</p>
+    <p>&rarr; <a href="https://en.wikipedia.org/wiki/Tonnetz" target="_blank" data-umami-event="tonnetz-wiki">Tonnetz</a> on Wikipedia &mdash; background on the grid and neo-Riemannian theory it's built on.</p>
+    <p>&rarr; <a href="https://www.youtube.com/watch?v=JdxkVQy7QLM" target="_blank" data-umami-event="pachelbel-rant">Pachelbel Rant</a> by Rob Paravonian &mdash; why "Canon in D" gets top billing here: those same eight chords (D&ndash;A&ndash;Bm&ndash;F&sharp;m&ndash;G&ndash;D&ndash;G&ndash;A) show up in an absurd number of pop songs.</p>
+  </div>
+
+</body>
+</html>

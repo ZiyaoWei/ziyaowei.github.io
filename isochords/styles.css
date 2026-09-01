@@ -1,0 +1,178 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.subtitle {
+  color: #666;
+  font-style: italic;
+  margin-top: -8px;
+}
+
+.lead {
+  font-size: 1.1em;
+  margin: 22px auto 18px;
+  max-width: 640px;
+}
+
+blockquote {
+  text-align: left;
+  max-width: 640px;
+  margin: 14px auto;
+  padding: 2px 0 2px 16px;
+  border-left: 3px solid #ddd;
+  color: #444;
+}
+
+blockquote p {
+  margin: 8px 0;
+}
+
+blockquote cite {
+  display: block;
+  font-size: 0.85em;
+  color: #888;
+  font-style: normal;
+  margin-top: 6px;
+}
+
+#controls {
+  margin: 20px 0;
+}
+
+#presets {
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 16px;
+  font-size: 1em;
+  margin: 4px;
+  cursor: pointer;
+  border: 1px solid #999;
+  border-radius: 6px;
+  background: #f5f5f5;
+}
+
+button.preset.active {
+  background: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+#stop {
+  background: #fbe4e4;
+  border-color: #c66;
+}
+
+#now-playing {
+  min-height: 1.2em;
+  font-style: italic;
+  color: #555;
+}
+
+#chord-display {
+  min-height: 2.2em;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+#chord-roman {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #333;
+  min-width: 2.5em;
+}
+
+#chord-name {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #111;
+}
+
+#chord-key {
+  font-size: 0.9em;
+  font-style: italic;
+  color: #888;
+}
+
+#progression-strip {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.chip {
+  padding: 3px 9px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  background: #f5f5f5;
+  color: #888;
+  font-size: 0.85em;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.chip.current {
+  background: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+#tonnetz-panel {
+  background: #111;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px auto;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+#tonnetz {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: 480px;
+}
+
+.idle-dot {
+  fill: #666;
+  transition: opacity 0.25s ease;
+}
+
+.note-circle {
+  fill: #dce9ff;
+  stroke: none;
+  transition: opacity 0.2s ease, r 0.2s ease;
+}
+
+.note-label {
+  fill: #777;
+  font-size: 9px;
+  text-anchor: middle;
+  font-family: Arial, sans-serif;
+  pointer-events: none;
+}
+
+.interval-line {
+  stroke: #d8b657;
+  stroke-width: 1.5;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.triad {
+  fill: #5b6fe0;
+  fill-opacity: 0.75;
+  stroke: #b9c3ff;
+  stroke-width: 0.5;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
