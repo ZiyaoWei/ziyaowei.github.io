@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Theremin</title>
+  <link rel="stylesheet" href="styles.css?v=12">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="24a6f42d-2ffe-42ef-a015-cf7a92555f2f"></script>
+</head>
+<body>
+  <h1>Theremin</h1>
+  <p class="lead">Like a real <a href="https://en.wikipedia.org/wiki/Theremin" target="_blank" data-umami-event="theremin-wiki">theremin</a>, one hand plays pitch and the other plays volume: the strip on the left is volume, the rest of the pad is pitch, higher to the right. On a touchscreen, put a finger down on each and slide. With a mouse or trackpad, just hover &mdash; there's nothing to press &mdash; and scroll or two-finger swipe to change the volume.</p>
+
+  <div id="guide-bar" hidden>
+    <label class="toggle">Play along
+      <select id="guide">
+        <option value="">Free play</option>
+      </select>
+    </label>
+    <button id="guide-restart" hidden>Restart</button>
+    <label class="toggle" id="score-toggle" hidden><input type="checkbox" id="show-score" checked> Score</label>
+    <label class="toggle" id="piano-toggle" hidden><input type="checkbox" id="piano" checked> Piano</label>
+  </div>
+
+  <div id="options">
+    <label class="toggle"><input type="checkbox" id="separate" checked> Separate volume</label>
+    <label class="toggle"><input type="checkbox" id="multi"> Multitouch (chords)</label>
+    <label class="toggle"><input type="checkbox" id="discrete"> Discrete (no slide)</label>
+    <label class="toggle"><input type="checkbox" id="show-notes"> Show notes</label>
+    <label class="toggle">Range
+      <select id="range">
+        <option value="1">1 octave</option>
+        <option value="2">2 octaves</option>
+        <option value="3">3 octaves</option>
+        <option value="4">4 octaves</option>
+      </select>
+    </label>
+    <label class="toggle">Pitch field
+      <select id="field">
+        <option value="linear">Linear</option>
+        <option value="uncorrected">Uncorrected</option>
+      </select>
+    </label>
+    <label class="toggle">Tone
+      <select id="tone">
+        <option value="classic">Classic</option>
+        <option value="bright">Bright</option>
+        <option value="pure">Pure sine</option>
+      </select>
+    </label>
+    <label class="toggle"><input type="checkbox" id="room" checked> Room</label>
+  </div>
+
+  <div id="pad-wrap">
+    <canvas id="pad"></canvas>
+    <button id="start">Click or tap to start sound</button>
+  </div>
+
+  <div id="guide-status" hidden></div>
+  <div id="score-panel" hidden><div id="score"></div></div>
+  <div id="readout">&nbsp;</div>
+  <p class="hint">Bring the volume down, lift your finger or move off the pad to fall silent. Turn off <em>Separate volume</em> to play with one finger: left&ndash;right is pitch and up&ndash;down is volume. Like a real theremin, nothing is marked &mdash; turn on <em>Show notes</em> to see where the notes are. The pitch field is <em>Linear</em>, with every octave the same width, as on a modern theremin like the Moog Etherwave; <em>Uncorrected</em> is the raw physics without that correction, where each octave is half as wide as the one below and the high notes crowd together. <em>Tone</em> follows how a theremin makes its sound: two radio oscillators beat against each other and a detector picks out the beat &mdash; <em>Classic</em> is a clean detector, <em>Bright</em> one that only catches the peaks, and <em>Pure sine</em> an ideal one. Trackpads drive the cursor, so they always play a single voice &mdash; multitouch chords need a touchscreen.</p>
+  <p class="hint" id="guide-hint" hidden>Pick a piece under <em>Play along</em> and its notes fall toward the line; the music only moves while you're on the right note, and through a rest only while you're silent (lift your finger or bring the volume down). Near the ends of each note there's a moment of grace for sliding between notes, as a theremin does, so take your time. The piano plays Rachmaninoff's accompaniment and moves with you, waiting when you wait. The dashed line on the volume strip follows the score's dynamics; it's only a suggestion and never holds the music up.</p>
+
+  <script src="songs.js?v=12"></script>
+  <script src="piece.js?v=12"></script>
+  <script src="script.js?v=12"></script>
+</body>
+</html>

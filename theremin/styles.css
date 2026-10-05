@@ -1,0 +1,141 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.lead {
+  font-size: 1.05em;
+  margin: 12px auto 16px;
+  max-width: 640px;
+}
+
+a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#guide-bar {
+  margin-bottom: 10px;
+}
+
+#guide-bar[hidden],
+#guide-status[hidden],
+#guide-restart[hidden],
+#score-toggle[hidden],
+#piano-toggle[hidden],
+#score-panel[hidden] {
+  display: none;
+}
+
+#score-toggle,
+#piano-toggle {
+  margin-left: 8px;
+}
+
+#score-panel {
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  margin: 12px auto 0;
+  padding: 4px;
+  max-height: min(45vh, 420px);
+  overflow-y: auto;
+}
+
+#guide-restart {
+  margin-left: 8px;
+  padding: 4px 12px;
+  font-size: 0.9em;
+  cursor: pointer;
+  border: 1px solid #999;
+  border-radius: 6px;
+  background: #f5f5f5;
+}
+
+#guide-status {
+  min-height: 1.4em;
+  margin-top: 10px;
+  font-size: 1.1em;
+  color: #333;
+}
+
+#options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+  margin-bottom: 14px;
+}
+
+.toggle {
+  font-size: 0.9em;
+  color: #555;
+  cursor: pointer;
+}
+
+.toggle input,
+.toggle select {
+  font-size: 1em;
+}
+
+#pad-wrap {
+  position: relative;
+  /* Leave a gutter so the page can still be scrolled past the pad on phones. */
+  height: min(65vh, 560px);
+  min-height: 240px;
+}
+
+#pad {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  /* Keep every finger on the pad instead of scrolling or zooming the page. */
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  cursor: crosshair;
+}
+
+#start {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+  padding: 12px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #333;
+  color: #fff;
+}
+
+#start[hidden] {
+  display: none;
+}
+
+#readout {
+  min-height: 1.4em;
+  margin-top: 10px;
+  font-size: 1.1em;
+  font-variant-numeric: tabular-nums;
+  color: #222;
+}
+
+.hint {
+  font-size: 0.85em;
+  color: #888;
+  max-width: 640px;
+  margin: 8px auto;
+}
